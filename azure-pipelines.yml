@@ -62,6 +62,9 @@ steps:
     arguments: '--no-build --configuration $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/TestResults/Coverage/'
     publishTestResults: true
     projects: '**/*.Tests.csproj'
+    
+- script: ls $(Build.SourcesDirectory)/TestResults/Coverage/
+  displayName: 'List coverage files'
 
 - task: DotNetCoreCLI@2
   displayName: 'Create code coverage report'
